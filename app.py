@@ -13,9 +13,6 @@ app.secret_key = 'some key for session'
 ans = ""
 lives = 3
 
-# ----------------------- AUTH API PROCEDURE -------------------------
-
-
 @app.route("/auth")
 def auth():
     return redirect(spotify.AUTH_URL)
@@ -31,8 +28,6 @@ def callback():
 
 def valid_token(resp):
     return resp is not None and not 'error' in resp
-
-# -------------------------- API REQUESTS ----------------------------
 
 @app.route("/")
 def index():
@@ -119,16 +114,6 @@ def track(id):
         l = range(len(v[1]))
     global lives
     return render_template('track.html', t=t, v=v, l=l, lives=lives)
-
-# @app.route('/result', methods=['POST'])
-# def result(): 
-#    if request.method == 'POST':
-#       user = request.form['nm']
-#       return redirect(url_for('success',name = user))
-#    else:
-#       user = request.args.get('nm')
-#       return redirect(url_for('success',name = user))
-
     
 @app.route('/result', methods=['POST'])
 def result():

@@ -6,8 +6,7 @@ import urllib.request, urllib.error
 import urllib.parse as urllibparse
 
 SPOTIFY_API_BASE_URL = 'https://api.spotify.com'
-API_VERSION = "v1"
-SPOTIFY_API_URL = f"{SPOTIFY_API_BASE_URL}/{API_VERSION}"
+SPOTIFY_API_URL = f"{SPOTIFY_API_BASE_URL}/v1"
 
 # endpoints
 SPOTIFY_AUTH_BASE_URL = "https://accounts.spotify.com/{}"
@@ -20,7 +19,7 @@ CLIENT_ID = CLIENT['id']
 CLIENT_SECRET = CLIENT['secret']
 CLIENT_SIDE_URL = "http://127.0.0.1"
 PORT = 8081
-REDIRECT_URI = "{}:{}/callback/".format(CLIENT_SIDE_URL, PORT)
+REDIRECT_URI = f"{CLIENT_SIDE_URL}:{PORT}/callback/"
 SCOPE = "user-library-read user-read-recently-played user-top-read"
 STATE = ""
 SHOW_DIALOG_bool = True
@@ -61,14 +60,11 @@ def get_artist(artist_id):
     resp = requests.get(url)
     return resp.json()
 
-USER_PROFILE_ENDPOINT = "{}/{}".format(SPOTIFY_API_URL, 'me')
+USER_PROFILE_ENDPOINT = f"{SPOTIFY_API_URL}/me"
 USER_PLAYLISTS_ENDPOINT = "{}/{}".format(USER_PROFILE_ENDPOINT, 'playlists')
-USER_TOP_ARTISTS_AND_TRACKS_ENDPOINT = "{}/{}".format(
-    USER_PROFILE_ENDPOINT, 'top')  
-USER_RECENTLY_PLAYED_ENDPOINT = "{}/{}/{}".format(USER_PROFILE_ENDPOINT,
-                                                  'player', 'recently-played')
-BROWSE_FEATURED_PLAYLISTS = "{}/{}/{}".format(SPOTIFY_API_URL, 'browse',
-                                              'featured-playlists')
+USER_TOP_ARTISTS_AND_TRACKS_ENDPOINT = "{}/{}".format(USER_PROFILE_ENDPOINT, 'top')  
+USER_RECENTLY_PLAYED_ENDPOINT = "{}/{}/{}".format(USER_PROFILE_ENDPOINT, 'player', 'recently-played')
+BROWSE_FEATURED_PLAYLISTS = "{}/{}/{}".format(SPOTIFY_API_URL, 'browse', 'featured-playlists')
 
 def get_users_profile(auth_header):
     url = USER_PROFILE_ENDPOINT
@@ -96,15 +92,14 @@ def get_users_recently_played(auth_header):
     resp = requests.get(url, headers=auth_header, params=myparams)
     return resp.json()
 
-GET_USER_ENDPOINT = '{}/{}'.format(SPOTIFY_API_URL, 'users')
-
+GET_USER_ENDPOINT = f'{SPOTIFY_API_URL}/users'
 
 def get_user_profile(user_id):
-    url = "{}/{id}".format(GET_USER_ENDPOINT, id=user_id)
+    url = f"{GET_USER_ENDPOINT}/{user_id}"
     resp = requests.get(url)
     return resp.json()
 
-GET_TRACK_ENDPOINT = "{}/{}".format(SPOTIFY_API_URL, 'tracks')  # /<id>
+GET_TRACK_ENDPOINT = f"{SPOTIFY_API_URL}/tracks"
 
 def get_track(track_id, auth_header):
     url = f"{GET_TRACK_ENDPOINT}/{track_id}"
