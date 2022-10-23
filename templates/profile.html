@@ -1,96 +1,17 @@
 {% extends "layout.html" %}
-
 {% block content %}
-
-{% if not user %}
-
-  <div class="container">
-    <div class="mt-1">
-      <h1>Profile</h1>
+<div class="header"><h1>Stats for {{user.display_name}}</h1></div>
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="gameplay">
+    <div class="choices">
+        <ol>
+            <li><a class="choices-links" href='{{ url_for("topsongs") }}'>Top Songs</a></li>
+            <li><a class="choices-links" href='{{ url_for("topartists") }}'>Top Artists</a></li>
+            <li><a class="choices-links" href='{{ url_for("recentlyplayed") }}'>Recently Played</a></li>
+        </ol>
     </div>
-    <p class="lead">Log in to Start</p>
-
-    <a type="button" class="btn btn-default" href="/">Login</a>
-  </div>
-
-{% else %}
-
-	<div class="container">
-
-
-	  <h1> Hi {{ user.display_name }} :) </h1>
-
-    <hr class="half-rule"/>
-
-	  <div class="row">
-      <div class="col-sm-4">
-
-        <section class="sec">
-        
-          {% if user.images %}
-            <img src="{{user.images[0].url}}" class="img-square">
-          {% else %}
-            <img src="http://bit.ly/2nXRRfX" class="img-square">
-          {% endif %}
-
-          <h3>You have {{ user.followers.total }} followers!</h3>
-        </section>
-      </div>
-
-      <div class="col-sm-4">
-
-        <h3> Your playlists: </h3>
-        <hr class="half-rule"/>
-        {% for play in playlists %}
-          <div class='row'>
-            <a href="{{ play.external_urls.spotify }}">
-
-              <div class='col-sm-8'>
-                <span>{{ play.name }} </span>
-              </div>
-
-            </a>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="col-sm-4">
-        <h3> Your top artists: </h3>
-        <hr class="half-rule"/>
-        {% for artist in top %}
-          <div class='row'>
-            <a href="{{artist.external_urls.spotify}}">
-              <div class='col-sm-8'>
-                <span>{{ artist.name }}</span>
-              </div>
-            </a>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="col-sm-4">
-
-        <h3> Recently played:</h3>
-        <hr class="half-rule"/>
-
-        {% for track in recently_played %}
-          <div class='row'>
-            <a href="{{track.track.external_urls.spotify}}">
-
-              <div class='col-sm-8'>
-                <span>{{track.track.name}}</span>
-              </div>
-
-            </a>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="back"><a href='{{ url_for("index") }}'>Press 'b' or click here to go back</a</div>
-
-    </div>
-	</div>
-{% endif %}
-
-
+    <p>What is your choice? <span id="selection-made"></span></p>
+</div>
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="back"><a href='{{ url_for("index") }}'>Press 'b' or click here to go back</a></div>
 {% endblock %}

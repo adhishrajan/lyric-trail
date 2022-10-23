@@ -51,6 +51,7 @@ def base():
     return render_template('profile.html')
 
 
+
 def lyrics(song, artist):
     token = "0ex8GF9EFwR5_2cEv637XuJdMbK32fOgsjHoWBgyXoydD9B3n2LysgkQIPU12o3R"
     genius = lyricsgenius.Genius(token)
@@ -114,7 +115,7 @@ def track(id):
         l = range(len(v[1]))
     global lives
     return render_template('track.html', t=t, v=v, l=l, lives=lives)
-    
+
 @app.route('/result', methods=['POST'])
 def result():
     guess = request.form['guess']
@@ -150,25 +151,47 @@ def result():
 def profile():
     if 'auth_header' in session:
         auth_header = session['auth_header']
+        # get user playlist data
+        playlist_data = spotify.get_users_playlists(auth_header)
+        profile_data = spotify.get_users_profile(auth_header)
+        # get user recently played tracks        
+        if valid_token(profile_data):
+            return render_template("profile.html",user=profile_data)
+
+    return render_template('profile.html')
+
+@app.route('/recentlyplayed')
+def recentlyplayed():
+    if 'auth_header' in session:
+        auth_header = session['auth_header']
+        # get profile data
+        recently_played = spotify.get_users_recently_played(auth_header)
+        profile_data = spotify.get_users_profile(auth_header)
+        if valid_token(recently_played):
+            return render_template("recently_played.html", user=profile_data, recently_played=recently_played["items"])
+
+@app.route('/topartists')
+def topartists():
+    if 'auth_header' in session:
+        auth_header = session['auth_header']
         # get profile data
         topdata = spotify.get_users_top(auth_header, 'artists', 5)
         top = topdata['items']
         profile_data = spotify.get_users_profile(auth_header)
+        if valid_token(topdata):
+            return render_template("top_artists.html", top=top, user=profile_data)
 
-        # get user playlist data
-        playlist_data = spotify.get_users_playlists(auth_header)
-
-        # get user recently played tracks
-        recently_played = spotify.get_users_recently_played(auth_header)
-        
-        if valid_token(recently_played):
-            return render_template("profile.html",
-                               user=profile_data,
-                               top = top,
-                               playlists=playlist_data["items"],
-                               recently_played=recently_played["items"])
-
-    return render_template('profile.html')
+@app.route('/topsongs')
+def topsongs():
+    if 'auth_header' in session:
+        auth_header = session['auth_header']
+        # get profile data
+        topdata = spotify.get_users_top(auth_header, 'tracks', 5)
+        top = topdata['items']
+        profile_data = spotify.get_users_profile(auth_header)
+        if valid_token(topdata):
+            return render_template("top_songs.html", top=top, user=profile_data)
+    
 
 if __name__ == "__main__":
     app.run(debug=True, port=spotify.PORT)

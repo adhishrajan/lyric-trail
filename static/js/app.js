@@ -14,7 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         switch (keyIndex) {
             case 0:
-                window.location.href = '/index'
+                let header = document.getElementsByTagName('h1')[0]
+                if (header != null && (header.innerText == "Top Songs" || header.innerText == "Top Artists" || header.innerText == "Recently Played"))
+                    window.location.href = '/profile';
+                else 
+                    window.location.href = '/index';
                 break;
             case -1:
                 return;

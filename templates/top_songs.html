@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="header"><h1>Top Songs</h1></div>
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="gameplay">
+    <div class="choices">
+        <ol>
+            {% for a in top %}
+            <li>
+                <div class='col-sm-8'>
+                  <span>{{ a.name }} -- {{ a.artists[0].name }}
+                  </span>
+                </div>
+            </li>
+        {% endfor %}
+        </ol>
+    </div>
+</div>
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="back"><a href='{{ url_for("profile") }}'>Press 'b' or click here to go back</a></div>
+{% endblock %}
