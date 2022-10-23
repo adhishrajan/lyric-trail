@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="header">
+    <h2>
+        {% if truth %}
+        Nice job! 
+        {% else %}
+        Nice try. The correct answer was: {{ answer }}
+        {% endif %}
+    </h2>
+</div>
+<div class="gameplay">
+    <p>
+        Time for another song:
+    </p>
+
+    <div class="choices">
+        <ol>
+            {% for a in top %}
+            <li><button onclick="select(1)"><a href='{{ url_for("track", id=a.id)}}'>
+                <div class='col-sm-8'>
+                  <span>{{ a.name }} by {{ a.artists[0].name }}
+                  </span>
+                </div>
+              </a></button>
+                
+            </li>
+        {% endfor %}
+            
+            <!-- <li><button onclick="select(2)">[Song 2]</button></li>
+            <li><button onclick="select(3)">[Song 3]</button></li> -->
+        </ol>
+    </div>
+    <div class="horizontal-flex">
+        <p>What is your choice? _</p>
+        <div class="lives">
+            {% if lives == 3 %}
+            <img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart1"
+            /><img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart2"
+            /><img src="../static/css/heart.jpeg" class="heart" id="heart3" />
+            {% else %}
+            {% if lives == 2 %}
+            <img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart1"
+            /><img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart2"
+            />
+            {% else %}
+            <img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart1"
+            />
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="back"><a href='{{ url_for("index") }}'>Press 'b' or click here to go back</a></div>
+
+
+{% endblock %}

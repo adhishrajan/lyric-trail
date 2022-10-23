@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>The Lyric Trail</title>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Elanor Moore & Adhish Rajan" />
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"> -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body>
+    <!-- <a href='{{ url_for("index") }}'>Back to Main Menu</a> -->
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
+
+  </body>
+
+</html>

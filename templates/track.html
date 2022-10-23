@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="gameplay">
+    <div class="song-info">
+        <div class="song-guessing">
+            <p id="album-artist">Arrived at...</p>
+            <h2 id="song-title">{{t.name}}</h2>
+            <p id="album-artist">{{t['artists'][0]['name']}}</p>
+        </div>
+        <img src="{{ t.album.images[0].url}}" id="album" alt="no picture">
+    </div>
+    <div class="song-guessing">
+        <h2 id="finish-lyric">Finish the lyric:</h2>
+        <p id="lyric">{{v[0]}}</p>
+        
+        <div class="horizontal-flex">
+            <form action="{{ url_for('result')}}" method="post">
+                <input name="guess" placeholder="{% for i in l %}_{% endfor %}"></input>
+        </form>
+        <div class="lives">
+            {% if lives == 3 %}
+            <img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart1"
+            /><img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart2"
+            /><img src="../static/css/heart.jpeg" class="heart" id="heart3" />
+            {% else %}
+            {% if lives == 2 %}
+            <img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart1"
+            /><img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart2"
+            />
+            {% else %}
+            <img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart1"
+            />
+            {% endif %}
+            {% endif %}
+        </div>
+        </div>
+    </div>
+</div>
+    <div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+    <div class="back"><a href='{{ url_for("index") }}'>Press 'b' or click here to go back</a></div>
+{% endblock %}

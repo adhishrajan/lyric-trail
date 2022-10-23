@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+        <div class="header"><h1>The Lyric Trail</h1></div>
+        <div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+        <div class="gameplay">
+            <p>You may:</p>
+
+            <div class="choices">
+                <ol>
+                    <li><button onclick="select(1)"><a href='{{ url_for("play") }}'>Play the game</a></button></li>
+                    <li><button onclick="select(2)"><a href='{{ url_for("instructions") }}'>Learn how to play</a></button></li>
+                    <li><button onclick="select(3)"><a href='{{ url_for("profile") }}'>Stats</a></button></li>
+                </ol>
+            </div>
+
+            <p>What is your choice? _</p>
+        </div>
+        <div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+
+
+{% endblock %}

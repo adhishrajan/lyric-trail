@@ -1,0 +1,210 @@
+@font-face {
+    font-family: PixelCowboy;
+    src: url(PixelCowboy.ttf);
+}
+
+@font-face {
+    font-family: RetroGaming;
+    src: url(RetroGaming.ttf);
+}
+
+* {
+    background-color: black;
+    font-family: RetroGaming;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    padding: 20px;
+    margin: 0;
+}
+
+h1,
+h2 {
+    color: #f5cc94;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-family: PixelCowboy;
+    font-size: 8vw;
+}
+
+h2 {
+    font-size: 40px;
+    padding-left: 40px;
+    padding-top: 25px;
+}
+
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
+}
+
+.gameplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    font-size: 30px;
+    width: 56vw;
+    padding-left: 22vw;
+    padding-right: 22vw;
+}
+
+.choices {
+    padding-left: 70px;
+}
+
+.squiggle {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    max-width: 80%;
+}
+
+button {
+    border: none;
+    font-size: inherit;
+}
+
+.horizontal-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lives {
+    display: flex;
+    flex-direction: row;
+}
+
+.heart {
+    height: 40px;
+}
+
+ul {
+    list-style: square;
+    list-style-position: outside;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+#connect-to-spotify {
+    text-align: center;
+}
+
+#spotify-img {
+    height: 200px;
+}
+
+@keyframes bounce {
+    0%,
+    50%,
+    100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-30px);
+    }
+    75% {
+        transform: translateY(-20px);
+    }
+}
+
+.bounce {
+    animation-name: bounce;
+    animation-duration: 2s; 
+    animation-iteration-count: infinite;
+    animation-fill-mode: both; 
+}
+
+.song-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0 0 0;
+    font-size: 40px;
+    width: 56vw;
+    margin-bottom: 50px;
+}
+
+#album {
+    height: 150px;
+}
+
+#song-title {
+    padding: 0;
+    font-size: 75px;
+}
+
+#album-artist {
+    padding: 0 20px 0 0;
+    margin: 0;
+}
+
+.song-guessing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 40px;
+}
+
+#finish-lyric {
+    padding: 0;
+}
+
+#lyric {
+    margin: 0;
+}
+
+.back {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+}
+
+#guess {
+    color: #94c9f5;
+    margin: 0;
+}
+
+input {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: #94c9f5;
+    outline: none;
+}
+
+input:active, input:focus, input:hover {
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+#dead-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

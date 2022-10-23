@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="header"><h1>Instructions</h1></div>
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="gameplay">
+    <div>
+        <ul>
+            <li>Click or use your keyboard to make your selections</li>
+            <li>Select a song</li>
+            <li>Read and complete the lyric</li>
+            <li>Be careful! You have three lives before you die</li>
+        </ul>
+    </div>
+</div>
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="back"><a href='{{ url_for("index") }}'>Press 'b' or click here to go back</a></div>
+{% endblock %}

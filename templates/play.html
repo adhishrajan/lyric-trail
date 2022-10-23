@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if not user %}
+
+  <div class="container">
+    <div class="mt-1">
+      <h1>Play</h1>
+    </div>
+    <p class="lead">You need to log in to see this page</p>
+
+    <a type="button" class="btn btn-default" href="/auth">Login</a>
+  </div>
+
+{% else %}
+<div class="header">
+    <h2>Welcome {{user.display_name}}! It's time to embark on the trail.</h2>
+</div>
+<div class="gameplay">
+    <p>
+        To survive, correctly guess lyrics from your top songs. Choose
+        from a selection of your top songs to start:
+    </p>
+
+    <div class="choices">
+        <ol>
+            {% for a in top %}
+            <li><button onclick="select(1)"><a href='{{ url_for("track", id=a.id)}}'>
+                <div class='col-sm-8'>
+                  <span>{{ a.name }} by {{ a.artists[0].name }}
+                  </span>
+                </div>
+              </a></button>
+                
+            </li>
+        {% endfor %}
+            
+            <!-- <li><button onclick="select(2)">[Song 2]</button></li>
+            <li><button onclick="select(3)">[Song 3]</button></li> -->
+        </ol>
+    </div>
+    <div class="horizontal-flex">
+        <p>What is your choice? _</p>
+        <div class="lives">
+            <img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart1"
+            /><img
+                src="../static/css/heart.jpeg"
+                class="heart"
+                id="heart2"
+            /><img src="../static/css/heart.jpeg" class="heart" id="heart3" />
+        </div>
+    </div>
+</div>
+
+<div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
+<div class="back"><a href='{{ url_for("index") }}'>Press 'b' or click here to go back</a></div>
+{% endif %}
+
+
+{% endblock %}
