@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     document.addEventListener("keydown", (event) => {
+        if (document.getElementById("arrived") != null) {
+            document.getElementById("guess").focus();
+        }
         const allowedVals = "b123";
         let keyIndex = allowedVals.indexOf(event.key.toLowerCase());
 

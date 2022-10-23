@@ -5,9 +5,9 @@
 <div class="gameplay">
     <div class="song-info">
         <div class="song-guessing">
-            <p id="album-artist">Arrived at...</p>
+            <p class="aa" id="arrived">Arrived at...</p>
             <h2 id="song-title">{{t.name}}</h2>
-            <p id="album-artist">{{t['artists'][0]['name']}}</p>
+            <p class="aa" id="album-artist">{{t['artists'][0]['name']}}</p>
         </div>
         <img src="{{ t.album.images[0].url}}" id="album" alt="no picture">
     </div>
@@ -17,7 +17,7 @@
         
         <div class="horizontal-flex">
             <form action="{{ url_for('result')}}" autocomplete="off" method="post">
-                <input name="guess" placeholder="{% for i in l %}_{% endfor %}"></input>
+                <input name="guess" id="guess" placeholder="{% for i in l %}_{% endfor %}"></input>
         </form>
         <div class="lives">
             {% if lives == 3 %}
@@ -54,5 +54,4 @@
     </div>
 </div>
     <div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
-    <div class="back"><a href='{{ url_for("index") }}'>Press 'b' or click here to go back</a></div>
 {% endblock %}
