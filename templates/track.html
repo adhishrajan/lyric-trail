@@ -16,7 +16,7 @@
         <p id="lyric">{{v[0]}}</p>
         
         <div class="horizontal-flex">
-            <form action="{{ url_for('result')}}" method="post">
+            <form action="{{ url_for('result')}}" autocomplete="off" method="post">
                 <input name="guess" placeholder="{% for i in l %}_{% endfor %}"></input>
         </form>
         <div class="lives">
