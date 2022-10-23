@@ -26,12 +26,12 @@
     <div class="choices">
         <ol>
             {% for a in top %}
-            <li><button onclick="select(1)"><a href='{{ url_for("track", id=a.id)}}'>
+            <li><a class="choices-links" href='{{ url_for("track", id=a.id)}}'>
                 <div class='col-sm-8'>
                   <span>{{ a.name }} by {{ a.artists[0].name }}
                   </span>
                 </div>
-              </a></button>
+              </a>
                 
             </li>
         {% endfor %}
@@ -41,7 +41,7 @@
         </ol>
     </div>
     <div class="horizontal-flex">
-        <p>What is your choice? _</p>
+        <p>What is your choice? <span id="selection-made"></span></p>
         <div class="lives">
             <img
                 src="../static/css/heart.jpeg"

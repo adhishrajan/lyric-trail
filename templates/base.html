@@ -10,13 +10,13 @@
 
             <div class="choices">
                 <ol>
-                    <li><button onclick="select(1)"><a href='{{ url_for("play") }}'>Play the game</a></button></li>
-                    <li><button onclick="select(2)"><a href='{{ url_for("instructions") }}'>Learn how to play</a></button></li>
-                    <li><button onclick="select(3)"><a href='{{ url_for("profile") }}'>Stats</a></button></li>
+                    <li><a class="choices-links" href='{{ url_for("play") }}'>Play the game</a></li>
+                    <li><a class="choices-links" href='{{ url_for("instructions") }}'>Learn how to play</a></li>
+                    <li><a class="choices-links" href='{{ url_for("profile") }}'>Stats</a></li>
                 </ol>
             </div>
 
-            <p>What is your choice? _</p>
+            <p>What is your choice? <span id="selection-made"></span></p>
         </div>
         <div class="squiggle"><img src="../static/css/squiggle.jpeg" /></div>
 
