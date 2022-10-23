@@ -2,7 +2,7 @@ function makeSelection(num) {
     let selection = document.getElementsByClassName("choices-links")[num-1];
     if (selection == null) return;
     document.getElementById("selection-made").innerText = num;
-    setTimeout(selection.click(), 250);
+    setTimeout(selection.click(), 150);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
